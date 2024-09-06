@@ -23,7 +23,7 @@ export const getAllUsers = async (req, res, next) => {
 
 export const getUser = async (req, res, next) => {
     try {
-        const user = await getUserById(req.params.id);
+        const user = await getUserById(req.params.userId);
         if (!user) return Response.error(res, 404, MESSAGES.USER_NOT_FOUND);
         Response.success(res, 200, MESSAGES.USER_RETRIEVED_SUCCESS, user);
     } catch (err) {
@@ -33,7 +33,7 @@ export const getUser = async (req, res, next) => {
 
 export const putUser = async (req, res, next) => {
     try {
-        const user = await updateUserById(req.params.id, req.body);
+        const user = await updateUserById(req.params.userId, req.body);
         if (!user) return Response.error(res, 404, MESSAGES.USER_NOT_FOUND);
         Response.success(res, 200, MESSAGES.USER_UPDATED_SUCCESS, user);
     } catch (err) {
@@ -43,7 +43,7 @@ export const putUser = async (req, res, next) => {
 
 export const deleteUser = async (req, res, next) => {
     try {
-        const user = await deleteUserById(req.params.id);
+        const user = await deleteUserById(req.params.userId);
         if (!user) return Response.error(res, 404, MESSAGES.USER_NOT_FOUND);
         Response.success(res, 200, MESSAGES.USER_DELETED_SUCCESS, user);
     } catch (err) {
