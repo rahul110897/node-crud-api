@@ -6,7 +6,7 @@ dotenv.config(); // Load environment variables
 
 const connectDB = async () => {
     try {
-        await mongoose.connect('mongodb://localhost:27017/node-crud-api')
+        await mongoose.connect(process.env.DEV_DB_URL)
         console.log('Connected to MongoDB');
     } catch (err) {
         console.error('Failed to connect to MongoDB', err);
